@@ -2,6 +2,11 @@
 
 \usepackage{graphicx}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Predicting Flight Delays with Machine/Deep Learning}
+\rhead{Hasan TUNA}
+
 \begin{document}
 
 \title{Predicting Flight Delays with Machine/Deep Learning}
@@ -80,5 +85,37 @@ There are 8 different Decision Tree models, each having different max\_depth val
 We have used the ROC-AUC score as the main metric for evaluating the models. We have also used the accuracy score to see the overall performance of the models. We have used the confusion matrix to see the performance of the models in more detail.
 
 \section{Results}
+
+\subsection{Decision Trees}
+We have trained 8 different Decision Tree models with different max\_depth values between 8 and 64. The best performing model has a max\_depth value of 8 and achieved an accuracy of 0.81 and an ROC-AUC score of 0.57. Increasing the max\_depth value decreased the performance of the model. This is probably due to overfitting.
+
+\subsection{Random Forest}
+We have trained 5 different Random Forest models with different max\_feature values between 1 and 5. The best performing model has a max\_feature value of 5 and achieved an accuracy of 0.82 and an ROC-AUC score of 0.56.
+
+And the Modified Random Forest model achieved an accuracy of 0.81 and an ROC-AUC score of 0.60.
+
+Using only the most effective features increased the performance of the model.
+
+\subsection{Support Vector Machines}
+We have trained an SVM model with a linear kernel. The model achieved an accuracy of 0.81 and an ROC-AUC score of 0.5. This is basically no-learning. Which makes sense because of the dataset is not linearly separable.
+
+\subsection{DNN}
+We have trained a DNN model using keras. The model achieved an accuracy of 0.81 and an ROC-AUC score of 0.63 (on kaggle). 
+
+And the Embedded DNN model achieved an accuracy of 0.81 and an ROC-AUC score of 0.7 (on kaggle). Using embedding layers for feature transformation increased the performance of the model. And this is the best performing model in this study.
+
+\section{Discussion}
+The results of this study demonstrate the effectiveness of machine learning algorithms in predicting flight delays. The Random Forest algorithm achieved the highest accuracy of 0.82, while the DNN model yielded the best ROC-AUC score of 0.7. These findings suggest that it is possible to create a simpler model to to predict flight delays good enough.
+
+Sadly, the accuracy is not beyond no-learning models. This is probably due to the dataset is not highly biased. We can try to use more complex models to increase the performance of the models. However, this study is focused on simpler models. Even with the bias, we were able to achieve 0.7 ROC-AUC which is a good result.
+
+To improve the performance of the models, we can consider the following strategies:
+
+\begin{itemize}
+    \item Feature Engineering: We can explore additional features related to flight operations, weather conditions, and airport congestion to enhance the predictive power of the models.
+    \item Hyperparameter Tuning: We can further optimize the hyperparameters of the models to improve their performance and generalization capabilities.
+    \item Ensemble Methods: We can combine the predictions of multiple models to create a more robust and accurate prediction system. A network of random forests and DNNs can be used for this purpose. However we have not tried this in this study.
+    \item Bias-Resolving: We can use techniques such as SMOTE to balance the dataset and reduce bias in the models. This can help improve the performance of the models on imbalanced datasets.
+\end{itemize}
 
 \end{document}
