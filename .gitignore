@@ -1,5 +1,6 @@
 /latex/*
 !/latex/*.tex
 !/latex/*.pdf
+!/latex/images/
 
 *__pycache__/
